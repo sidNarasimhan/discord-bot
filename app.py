@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands, tasks
 from datetime import datetime
 import pytz
+import os
 
 # Set your timezone and 5:30 PM time
 IST = pytz.timezone('Asia/Kolkata')
@@ -46,4 +47,5 @@ async def check_daily_reports():
                 await member.send("Hey! Please remember to send your daily report in #daily-report!")
 
 # Run the bot
-bot.run('MTI5MjcwMTU5MzkwMDI4NTk2NA.GQ8rM7.jMEAupcJGzb1tRPB_tjLIrFXakOvKbOap9aVwk')
+TOKEN = os.getenv("DISCORD_TOKEN")
+bot.run(TOKEN)
