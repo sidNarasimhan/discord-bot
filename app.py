@@ -4,15 +4,16 @@ from flask import Flask
 import pytz
 from datetime import datetime
 import os
+import threading
 
 # Initialize Flask app
 flask_app = Flask(__name__)
 
-# Replace with your actual token and channel/role IDs
+# Discord bot token and IDs
 TOKEN = os.getenv("DISCORD_TOKEN")
-DAILY_REPORT_CHANNEL_ID = 1292700286707699824    # Replace with your channel ID
-TEAM_ROLE_ID = 1292702831190478881    # Replace with your role ID
-OWNER_USER_ID = 758367646101536799 
+DAILY_REPORT_CHANNEL_ID = 1292700286707699824  # Daily report channel ID
+TEAM_ROLE_ID = 1292702831190478881  # Team role ID
+OWNER_USER_ID = 758367646101536799  # Owner user ID
 
 intents = discord.Intents.default()
 intents.messages = True
@@ -56,10 +57,13 @@ def index():
 def health():
     return "Bot is healthy!", 200
 
-@flask_app.before_first_request
-def start_bot():
-    # Start the Discord bot
-    bot.loop.create_task(bot.start(TOKEN))
+def run_flask():
+    # Start the Flask app
+    flask_app.run(host='0.0.0.0', port=5000)
 
 if __name__ == "__main__":
-    flask_app.run(host='0.0.0.0', port=5000)  # Listen on all interfaces
+    # Start the Flask app in a separate thread
+    threading.Thread(target=run_flask).start()
+
+    # Start the Discord bot
+    bot.run(TOKEN)
