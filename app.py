@@ -39,7 +39,7 @@ async def on_message(message):
 @tasks.loop(hours=24)
 async def daily_report():
     now = datetime.now(pytz.timezone("Asia/Kolkata"))
-    if now.hour == 17 and now.minute == 30:
+    if now.hour == 11 and now.minute == 02:
         user = await bot.fetch_user(OWNER_USER_ID)
         summary = "Daily Reports Summary:\n"
         for member_id, report in reports.items():
