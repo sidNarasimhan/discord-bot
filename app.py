@@ -11,8 +11,8 @@ CHECK_TIME = datetime.now(IST).replace(hour=17, minute=30, second=0, microsecond
 bot = commands.Bot(command_prefix="!")
 
 # Define the channel ID and role ID for tagging
-DAILY_REPORT_CHANNEL_ID = 1234567890  # Replace with your #daily-report channel ID
-TEAM_ROLE_ID = 9876543210  # Replace with the role ID for your team if you want to tag a specific role
+DAILY_REPORT_CHANNEL_ID = 1292700286707699824  # Replace with your #daily-report channel ID brahma - 1266320212299612262
+TEAM_ROLE_ID = 1292702831190478881  # Replace with the role ID for your team if you want to tag a specific role brahma - 892357106701848576
 
 @bot.event
 async def on_ready():
@@ -46,4 +46,4 @@ async def check_daily_reports():
                 await member.send("Hey! Please remember to send your daily report in #daily-report!")
 
 # Run the bot
-bot.run('YOUR_BOT_TOKEN')
+bot.run('MTI5MjcwMTU5MzkwMDI4NTk2NA.GQ8rM7.jMEAupcJGzb1tRPB_tjLIrFXakOvKbOap9aVwk')
