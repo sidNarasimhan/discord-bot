@@ -36,10 +36,11 @@ async def on_message(message):
         reports[message.author.id] = message.content  # Store the report
     await bot.process_commands(message)
 
-@tasks.loop(hours=24)
+@tasks.loop(minutes=1)
 async def daily_report():
+    print ("Hello1")
     now = datetime.now(pytz.timezone("Asia/Kolkata"))
-    if now.hour == 11 and now.minute == 30:
+    if now.hour == 11 and now.minute == 40:
         user = await bot.fetch_user(OWNER_USER_ID)
         print ("Hello")
         summary = "Daily Reports Summary:\n"
